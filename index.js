@@ -45,7 +45,8 @@ https.createServer(options,app).listen(443, ()=>{
 http.createServer(options,app).listen(80, ()=>{
     console.log('App Started on 80');
 
-})teServer(options,app).listen(8080, ()=>{
+})
+http.createServer(options,app).listen(8080, ()=>{
     console.log('App Started on 8080');
 
 })
