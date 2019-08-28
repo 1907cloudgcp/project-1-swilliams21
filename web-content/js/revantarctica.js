@@ -8,6 +8,7 @@ document.getElementById('header').innerText = "REVATURE ANTARTICA!!! THE BEST BR
 
 //this assumes your cloud function will return a value named address with the address to an image, in a cloud storage bucket
 async function setUpImages(){
+/*
     let images = []
     images.push(document.getElementById('carousel-1'))
     images.push(document.getElementById('carousel-2'))
@@ -20,38 +21,43 @@ async function setUpImages(){
         value.src = "images/penguins.jpg"
     } else {
         data =  await response.json()
-        value.src = data["WHATEVER YOU NAMED THE FIELD IN YOUR RETURN"]
+        //value.src = data["WHATEVER YOU NAMED THE FIELD IN YOUR RETURN"]
     }
-    })
+})
+*/
 }
 setUpImages()
 
-document.getElementById('calc-label').innerText = "Math"
+document.getElementById('calc-label').innerText = "Penguin Math"
 
 document.getElementById('calc-input').type = 'text' || "text, REPLACE TEXT"
 
 async function calcSubmit(event){
     event.preventDefault()
-    let result = await fetch("YOUR CALC CLOUD FUNCTION URL", {
+    let result = await fetch("https://us-central1-projectdata-250714.cloudfunctions.net/calc?calc="+document.getElementById('calc-input').value,
+    {
         method: 'POST',
         body: JSON.stringify(document.getElementById('calc-input').value)
-    })
+    }
+)
     if(document.getElementById('calc-input').type === 'number'){
         document.getElementById('calc-input').value = 0
     } else {
         document.getElementById('calc-input').value = ''
     }
     let data = await result.json()
+    let s = data.p
     let div = document.getElementById('calc-container')
     let display = document.createElement('p')
-    display.innerText = `Your Result is: ${data} `
+    display.innerText = `Penguin Math Turns Math into: ${s} `
     div.appendChild(display)
 }
 
 
 
 async function buildTable (){
-    let objectResponse = await fetch("YOUR CLOUD FUNCTION URL FOR GETTING DATA")
+/*
+    let objectResponse = await fetch("https://us-central1-projectdata-250714.cloudfunctions.net/calc?calc=5")
     if(objectResponse.status <200 || objectResponse.status >299){
         let error =document.createElement('p')
         error.innerText = "Fetch Failed"
@@ -88,6 +94,7 @@ async function buildTable (){
         })
         
     }
+*/
 }
 
 function buildForm(){
@@ -126,12 +133,11 @@ function createObject(event){
         }
     }
     
-    fetch('YOUR CLOUD FUNCTION URL FOR CREATING A NEW OBJECT',{
+    fetch('https://us-central1-projectdata-250714.cloudfunctions.net/calc?calc=5',{
         method: 'POST',
         body: JSON.stringify(newObj)
     })
 }
-
 
 
 buildTable()
