@@ -1,10 +1,10 @@
-bject = {
-    nombre: '',
+let dbObject = {
+    name: '',
     client:'',
     techTrack:''
 }
 
-document.getElementById('header').innerText = "YOUR TITLE GOES HERE";
+document.getElementById('header').innerText = "REVATURE ANTARTICA!!! THE BEST BRANCH OF REVATURE!!!";
 
 //this assumes your cloud function will return a value named address with the address to an image, in a cloud storage bucket
 async function setUpImages(){
@@ -26,9 +26,9 @@ async function setUpImages(){
 }
 setUpImages()
 
-document.getElementById('calc-label').innerText = "YOU CALC LABEL TEXT"
+document.getElementById('calc-label').innerText = "Math"
 
-document.getElementById('calc-input').type = 'text' || "YOUR INPUT TYPE, REPLACE TEXT"
+document.getElementById('calc-input').type = 'text' || "text, REPLACE TEXT"
 
 async function calcSubmit(event){
     event.preventDefault()
