@@ -53,6 +53,20 @@ async function calcSubmit(event){
     div.appendChild(display)
 }
 
+async function a1(event){
+    event.preventDefault()
+    let result = await fetch("https://us-central1-projectdata-250714.cloudfunctions.net/tenpenguin?pname="+document.getElementById('a1-input').value,
+    {
+        method: 'POST',
+        body: JSON.stringify(document.getElementById('a1-input').value)
+    }
+)
+    if(document.getElementById('a1-input').type === 'number'){
+        document.getElementById('a1-input').value = 0
+    } else {
+        document.getElementById('a1-input').value = ''
+    }
+}
 
 
 async function buildTable (){
