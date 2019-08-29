@@ -1,7 +1,7 @@
 let dbObject = {
     name: '',
-    client:'',
-    techTrack:''
+    color:'',
+    height:''
 }
 
 document.getElementById('header').innerText = "REVATURE ANTARTICA!!! THE BEST BRANCH OF REVATURE!!!";
@@ -56,8 +56,7 @@ async function calcSubmit(event){
 
 
 async function buildTable (){
-/*
-    let objectResponse = await fetch("https://us-central1-projectdata-250714.cloudfunctions.net/calc?calc=5")
+    let objectResponse = await fetch("https://us-central1-projectdata-250714.cloudfunctions.net/table")
     if(objectResponse.status <200 || objectResponse.status >299){
         let error =document.createElement('p')
         error.innerText = "Fetch Failed"
@@ -94,7 +93,7 @@ async function buildTable (){
         })
         
     }
-*/
+
 }
 
 function buildForm(){
@@ -120,6 +119,9 @@ function buildForm(){
 }
 
 function createObject(event){
+    var name = document.getElementById('nameid').value
+    var color = document.getElementById('colorid').value
+    var height = document.getElementById('heightid').value
     event.preventDefault()
     console.log(event);
     let newObj = {}
@@ -133,7 +135,7 @@ function createObject(event){
         }
     }
     
-    fetch('https://us-central1-projectdata-250714.cloudfunctions.net/calc?calc=5',{
+    fetch('https://us-central1-projectdata-250714.cloudfunctions.net/databaseload?color='+color+'&height='+height+'&pname='+name, {
         method: 'POST',
         body: JSON.stringify(newObj)
     })
